@@ -16,3 +16,14 @@ with sr.Microphone() as source:
 ~~~~
 
 7. I recorded some test audio in QuickTime, whicb unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
+
+
+
+## Future Plans
+
+1. "Record button" will begin a session
+2. "Stop recording" will end session
+3. Will use SciPy (maybe Tensorflow) to mark all instances of "TakeNote" in audio
+4. Repeat and mark all marked silences
+5. Parse with speech recognizer from each timestamp of each "Take Note" to silence
+6. Append recognized text to end of file

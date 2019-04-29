@@ -12,12 +12,14 @@ with sample as source:
 	text = r.recognize_google(audio)
 print(text)
 """
-
+recognizer = sr.Recognizer()
 mic = sr.Microphone()
 with mic as source:
 	r.adjust_for_ambient_noise(source)
 	try:
 		sample = r.listen(source)
-    except sr.UnknownValueError:
-	    # speech was unintelligible
-	    print("Unable to recognize speech")
+		text = recognizer.recognize_google(sample)
+		print(text)
+	except sr.UnknownValueError:
+		# speech was unintelligible
+		print("Unable to recognize speech")
