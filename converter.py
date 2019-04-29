@@ -12,11 +12,11 @@ for (dirpath, dirnames, filenames) in os.walk(mydir):
             (fpath, file_extension) = os.path.splitext(fpath)
             ext = file_extension.replace('.', '')
             try:
-                track = AudioSegment.from_file(filepath,ext)
+                track = AudioSegment.from_file(fpath,ext)
                 wav_filename = filename.replace(ext, 'wav')
                 wav_path = dirpath + '/' + wav_filename
                 file_handle = track.export(wav_path, format='wav')
                 os.remove(filepath)
             except:
-                print("Something went wrong " + str(filepath))
+                print("Something went wrong with conversting " + str(fpath))
                 exit(3)
