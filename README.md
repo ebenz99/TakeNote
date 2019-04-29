@@ -8,9 +8,9 @@
 4. To make sure all of your versions are compatible, open up an ipython session and type the following
 
 
-`import speech_recognition as sr
+`import speech_recognition as sr`
 
-with sr.Microphone() as source: 
-		pass`
+`with sr.Microphone() as source: `
+	`pass`
 
 5. 
