@@ -14,6 +14,5 @@ import speech_recognition as sr
 with sr.Microphone() as source:
 	pass
 ~~~~
-This should run without error (and without doing anything noticeable)
 
-5. Downloaded some test audio with `curl https://github.com/realpython/python-speech-recognition/blob/master/audio_files/harvard.wav --output sample.wav`. If you don't have curl installed, just go to that link and download it to your current directory manually.
+7. I recorded some test audio in QuickTime, whicb unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
