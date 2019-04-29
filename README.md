@@ -5,6 +5,8 @@
 1. `pip install SpeechRecognition` - a python wrapper library for a lot of different speech recognition APIs
 2. `brew install portaudio` - done because PyAudio requires `portaudio.h`, which isn't default on Mac
 3. `pip install PyAudio` - this is the key to getting microphone input
+4. `pip install pydub` for conversion's sake
+4. `brew install ffmpeg` - again for conversion's sake. This one will take a minute because if you don't have it installed already, there are like 30 dependencies it needs to also install.
 4. To make sure all of your versions are compatible, open up an ipython session and type the following:
 ~~~~
 import speech_recognition as sr
