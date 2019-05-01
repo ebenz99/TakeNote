@@ -1,0 +1,17 @@
+{
+  "encoding": enum(AudioEncoding),
+  "sampleRateHertz": number,
+  "audioChannelCount": number,
+  "enableSeparateRecognitionPerChannel": boolean,
+  "languageCode": string,
+  "maxAlternatives": number,
+  "profanityFilter": boolean,
+  "speechContexts": [
+    {
+      object(SpeechContext)
+    }
+  ],
+  "enableWordTimeOffsets": boolean,
+  "model": string,
+  "useEnhanced": boolean
+}
