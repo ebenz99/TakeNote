@@ -8,6 +8,10 @@
 4. `pip install pydub` for conversion's sake
 4. `brew install ffmpeg` - again for conversion's sake. This one will take a minute--there are like 30 dependencies it needs to also install.
 4. To make sure all of your versions are compatible, open up an ipython session and type the following:
+4. `pip install wave` for plotting
+4. `brew install cmu-pocketsphinx` - needed for pocketsphinx python
+4. `brew install swig` - needed to download pocketsphinx without using binaries
+4. `pip install --upgrade pcoketsphinx`
 ~~~~
 import speech_recognition as sr
 
