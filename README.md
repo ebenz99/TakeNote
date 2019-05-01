@@ -1,33 +1,33 @@
-# tensorflow_speech_recognition_demo
-This is the code for 'How to Make a Simple Tensorflow Speech Recognizer' by @Sirajology on Youtube
+# TakeNote
 
-Overview
-============
-This is the full code for 'How to Make a Simple Tensorflow Speech Recognizer' by @Sirajology on [Youtube](https://youtu.be/u9FPqkuoEJ8).
-In this demo code we build an LSTM recurrent neural network using the TFLearn high level Tensorflow-based library to train
-on a labeled dataset of spoken digits. Then we test it on spoken digits. 
+## My Steps
 
-Dependencies
-============
-* tflearn (http://tflearn.org/)
-* tensorflow  (https://www.tensorflow.org/versions/r0.12/get_started/os_setup.html)
-* future
+1. `pip install SpeechRecognition` - a python wrapper library for a lot of different speech recognition APIs
+2. `brew install portaudio` - done because PyAudio requires `portaudio.h`, which isn't default on Mac
+3. `pip install PyAudio` - this is the key to getting microphone input
+4. `pip install pydub` for conversion's sake
+4. `brew install ffmpeg` - again for conversion's sake. This one will take a minute--there are like 30 dependencies it needs to also install.
+4. To make sure all of your versions are compatible, open up an ipython session and type the following:
+4. `pip install wave` for plotting
+4. `brew install cmu-pocketsphinx` - needed for pocketsphinx python
+4. `brew install swig` - needed to download pocketsphinx without using binaries
+4. `pip install --upgrade pcoketsphinx`
+~~~~
+import speech_recognition as sr
 
-Use [pip](https://pypi.python.org/pypi/pip) to install any missing dependencies
+with sr.Microphone() as source:
+	pass
+~~~~
 
-Usage
-===========
-
-Run the following code in terminal. This will take a couple hours to train fully.
-
-`python demo.py`
+7. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
 
 
-Challenge
-===========
 
-The weekly challenge is from the last video, it's still running! Check it out [here](https://www.youtube.com/watch?v=mGYU5t8MO7s)
+## Future Plans
 
-Credits
-===========
-Credit for the vast majority of code here goes to [pannouse](https://github.com/pannous). I've merely created a wrapper to get people started!
+1. "Record button" will begin a session
+2. "Stop recording" will end session
+3. Will use SciPy (maybe Tensorflow for recognizing "Take Note" if SciPy isn't good enough) to mark all instances of "TakeNote" in audio
+4. Repeat and mark all long pauses
+5. Parse with speech recognizer from each timestamp of each "Take Note" to silence
+6. Append recognized text to end of file
