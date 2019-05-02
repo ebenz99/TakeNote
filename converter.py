@@ -14,9 +14,13 @@ for (dirpath, dirnames, filenames) in os.walk(mydir):
             try:
                 track = AudioSegment.from_file(str(fpath+"."+ext))
                 wav_filename = filename.replace(ext, 'wav')
+                os.system(("ffmpeg -i " + filename + " -ac 2 -f wav " + wav_filename))
+                ext = "wav"
+                flac_filename = wav_filename.replace(ext, 'flac')
+                os.system(("ffmpeg -i " + wav_filename+ " -ac 1 " + flac_filename))
                 wav_path = dirpath + '/' + wav_filename
-                file_handle = track.export(wav_path, format='wav')
-                os.remove(str(fpath+"."+ext))
+                os.remove(str(filename))
+                os.remove(str(fpath+"wav"))
             except:
-                print("Something went wrong with conversting " + str(fpath))
+                print("Something went wrong with converting " + str(fpath))
                 exit(3)

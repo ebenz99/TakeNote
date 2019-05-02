@@ -36,10 +36,12 @@ def transcribe_gcs_with_word_time_offsets(mcontent):
 	from google.cloud.speech import types
 	client = speech.SpeechClient()
 
+
+
 	audio = types.RecognitionAudio(content=mcontent)
 	config = types.RecognitionConfig(
 		encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
-		sample_rate_hertz=16000,
+		sample_rate_hertz=48000,
 		language_code='en-US',
 		enable_word_time_offsets=True)
 
@@ -65,4 +67,6 @@ def transcribe_gcs_with_word_time_offsets(mcontent):
 
 recognizer = sr.Recognizer()
 sample = sr.AudioFile('sample.wav')
-transcribe_gcs_with_word_time_offsets('sample.wav')
+with open('copy.flac', 'rb') as fd:
+	mcontent = fd.read()
+	transcribe_gcs_with_word_time_offsets(mcontent)
