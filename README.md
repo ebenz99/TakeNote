@@ -8,16 +8,16 @@ This is *officially* a GCP project. I wanted to use sphinx originally, but as fa
 2. `brew install portaudio` - done because PyAudio requires `portaudio.h`, which isn't default on Mac
 3. `pip install PyAudio` - this is the key to getting microphone input
 4. `pip install pydub` - will be used for converting audio file types
-4. `brew install ffmpeg` - *Very* necessary for audio file format conversion. This one will take a minute--there are like 30 dependencies it needs to also install.
-4. To make sure all of your versions are compatible, open up an ipython session and type the following:
-~~~~
-import speech_recognition as sr
+5. `brew install ffmpeg` - *Very* necessary for audio file format conversion. This one will take a minute--there are like 30 dependencies it needs to also install.
+6. To make sure all of your versions are compatible, open up an ipython session and type the following:
+   ```
+	import speech_recognition as sr
 
-with sr.Microphone() as source:
-	pass
-~~~~
-4. `pip install wave` for plotting
-7. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
+	with sr.Microphone() as source:
+		pass
+   ```
+7. `pip install wave` for plotting
+8. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
 
 
 
