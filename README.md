@@ -20,12 +20,17 @@ This is *officially* a GCP project. I wanted to use sphinx originally, but as fa
 8. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
 
 
+## Pipeline
+
+recordbutton.py->wavtoflac.py->main.py
+
+
 
 ## Future Plans
 
 1. "Record button" will begin a session
 2. "Stop recording" will end session
-3. ~~Will use SciPy (maybe Tensorflow for recognizing "Take Note" if SciPy isn't good enough) to mark all instances of "TakeNote" in audio~~ Use GCP Speech to Text API for keyword recognition and timestamps
+3. ~~Will use SciPy (maybe Tensorflow for recognizing "Take Note" if SciPy isn't good enough) to mark all instances of "TakeNote" in audio~~ Currently using GCP Speech to Text API for keyword recognition and timestamps
 4. Repeat and mark all long pauses
 5. Parse with speech recognizer from each timestamp of each "Take Note" to silence
 6. Append recognized text to end of file
