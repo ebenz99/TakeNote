@@ -65,8 +65,7 @@ def transcribe_gcs_with_word_time_offsets(mcontent):
 				end_time.seconds + end_time.nanos * 1e-9))
 
 
-recognizer = sr.Recognizer()
-sample = sr.AudioFile('sample.wav')
-with open('copy.flac', 'rb') as fd:
+
+with open('nonblocking.flac', 'rb') as fd:
 	mcontent = fd.read()
 	transcribe_gcs_with_word_time_offsets(mcontent)

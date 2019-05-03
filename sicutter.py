@@ -1,5 +1,3 @@
-# Import the AudioSegment class for processing audio and the 
-# split_on_silence function for separating out silent chunks.
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import os
@@ -11,17 +9,17 @@ def match_target_amplitude(aChunk, target_dBFS):
     return aChunk.apply_gain(change_in_dBFS)
 
 # Load your audio.
-song = AudioSegment.from_file("testaudio.wav")
+song = AudioSegment.from_file("raw//testaudio.wav")
 
-# Split track where the silence is 2 seconds or more and get chunks using 
-# the imported function.
+
+
+# Use the loaded audio.
+# Specify that a silent chunk must be at least 1 seconds or 1000 ms long.
+# Consider a chunk silent if it's quieter than -40 dBFS.
+# This will leave 100 ms of silence on either end
 chunks = split_on_silence (song, min_silence_len = 1000, silence_thresh = -40)
-    # Use the loaded audio.
-    # Specify that a silent chunk must be at least 1 seconds or 1000 ms long.
-    # Consider a chunk silent if it's quieter than -40 dBFS.
-    # This will leave 100 ms of silence on either end
-    # (You may want to adjust this parameter.)
-    
+
+#makes the directory to save the outputs
 os.makedirs("chunks", exist_ok=True)
 
 # Process each chunk with your parameters
@@ -35,6 +33,6 @@ for i, chunk in enumerate(chunks):
     # Normalize the entire chunk.
     normalized_chunk = match_target_amplitude(audio_chunk, -20.0)
 
-    # Export the audio chunk with new bitrate.
+    # Export the audio chunk
     print("Exporting chunk{0}.wav.".format(i))
-    normalized_chunk.export(".//chunks//chunk{0}.wav".format(i),format = "wav")
+    normalized_chunk.export(".//chunks//wav//chunk{0}.wav".format(i),format = "wav")
