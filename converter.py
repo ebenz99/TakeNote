@@ -1,8 +1,6 @@
 import os
-import argparse
 from pydub import AudioSegment
 
-formats_to_convert = ['.m4a']
 mydir = os.getcwd()
 
 for (dirpath, dirnames, filenames) in os.walk(mydir):
