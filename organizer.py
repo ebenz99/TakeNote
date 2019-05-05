@@ -3,28 +3,9 @@ import logging
 import threading
 import time
 import os
+import pickle
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./TakeNote-89a084a7097d.json"
-"""
-sample = sr.AudioFile('sample.wav')
-with sample as source:
-	audio = r.record(source)
-	print(type(audio))
-	text = r.recognize_google(audio)
-print(text)
-"""
-
-'''
-with sample as source:
-	r.adjust_for_ambient_noise(source)
-	try:
-		sample = r.listen(source)
-		text = recognizer.recognize_google(sample)
-		print(text)
-	except sr.UnknownValueError:
-		# speech was unintelligible
-		print("Unable to recognize speech")
-'''
 
 
 #adopted from GCP github
@@ -63,9 +44,38 @@ def transcribe_gcs_with_word_time_offsets(mcontent):
 				word,
 				start_time.seconds + start_time.nanos * 1e-9,
 				end_time.seconds + end_time.nanos * 1e-9))
+		return alternative.words
 
 
 
-with open('nonblocking.flac', 'rb') as fd:
-	mcontent = fd.read()
-	transcribe_gcs_with_word_time_offsets(mcontent)
+mydir = os.getcwd()+"/chunks/flac/"
+info = []
+
+for (dirpath, dirnames, filenames) in os.walk(mydir):
+	for filename in filenames:
+		with open(mydir+filename, 'rb') as fd:
+			mcontent = fd.read()
+			info.append(transcribe_gcs_with_word_time_offsets(mcontent))
+		os.remove(mydir+filename)
+
+#prepping for pickle
+mystr = ""
+strings = []
+for wObjectList in info:
+	mystr = ""
+	for wObject in wObjectList:
+		mystr += wObject.word
+		#print(type(wObject.word))
+		#print(wObject.word)
+		mystr += " "
+		#print(mystr)
+	strings.append(mystr)
+	mystr = ""
+
+#print(strings)
+
+#pickle dumping time
+os.chdir(os.getcwd()+"//pickles")
+outfile = open("words.pkl", "wb")
+pickle.dump(strings,outfile)
+outfile.close

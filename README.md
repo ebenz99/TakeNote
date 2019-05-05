@@ -20,10 +20,13 @@ This is *officially* a GCP project. I wanted to use sphinx originally, but as fa
 8. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
 
 
-## Pipeline
+## Current Pipeline - COMPLETE
 
-recordbutton.py->wavtoflac.py->main.py
+recordbutton.py -> sicutter.py -> wavtoflac.py -> quotachecker.py -> organizer.py -> parser.py
 
+
+### Notes
+audio debugging: https://github.com/jiaaro/pydub/issues/169
 
 
 ## Future Plans
@@ -34,3 +37,4 @@ recordbutton.py->wavtoflac.py->main.py
 4. Repeat and mark all long pauses
 5. Parse with speech recognizer from each timestamp of each "Take Note" to silence
 6. Append recognized text to end of file
+7. GUI Time?
