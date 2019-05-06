@@ -1,6 +1,3 @@
-import speech_recognition as sr 
-import logging
-import threading
 import time
 import os
 import pickle
