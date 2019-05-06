@@ -16,8 +16,7 @@ This is *officially* a GCP project. I wanted to use sphinx originally, but as fa
 	with sr.Microphone() as source:
 		pass
    ```
-7. `pip install wave` for plotting
-8. I recorded some test audio in QuickTime, which unfortunately (as far as I can tell) only exports in `.m4a` now. If you can't get a `.wav` file but you want to make your own, record something in `.m4a` format and run `converter.py` from this repository.
+7. `pip install google-cloud` for translation
 
 
 ## Current Pipeline - COMPLETE
