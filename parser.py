@@ -25,8 +25,5 @@ for sentence in info:
 infile.close()
 os.remove(mydir+"/pickles/words.pkl")
 
-f = open(mydir+"/output/notes.txt","w")
-for phrase in toWrite:
-	f.write(phrase)
-f.close()
+
 

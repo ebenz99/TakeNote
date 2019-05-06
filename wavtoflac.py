@@ -20,6 +20,7 @@ for (dirpath, dirnames, filenames) in os.walk(mydir):
                 os.chdir(projDir+"//chunks")
                 os.remove(mydir+"//"+str(filename))
                 os.system(("cp -f "+ mydir+"//"+flac_filename + " " + projDir + "//chunks//flac/"))
+                os.remove(mydir+"//"+str(flac_filename))
             except:
                 print("Something went wrong with converting " + str(fpath))
                 exit(3)

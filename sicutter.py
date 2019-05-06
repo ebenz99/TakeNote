@@ -17,7 +17,7 @@ song = AudioSegment.from_file("raw//testaudio.wav")
 # Specify that a silent chunk must be at least 1 seconds or 1000 ms long.
 # Consider a chunk silent if it's quieter than -40 dBFS.
 # This will leave 100 ms of silence on either end
-chunks = split_on_silence (song, min_silence_len = 1000, silence_thresh = -40)
+chunks = split_on_silence (song, min_silence_len = 1800, silence_thresh = -40, keep_silence=300)
 
 #makes the directory to save the outputs
 os.makedirs("chunks", exist_ok=True)
