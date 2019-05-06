@@ -1,5 +1,10 @@
 import tkinter as tk
 from recordbutton import *
+from sicutter import *
+from wavtoflac import convert
+from quotachecker import check
+from organizer import *
+from parser import writer
 
 root = tk.Tk()
 
@@ -12,9 +17,13 @@ def update_btn():
 		robj = my_start_recording()
 		global global_recording_obj
 		global_recording_obj = robj
-		print(global_recording_obj)
 	else:
 		my_stop_recording(global_recording_obj)
+		cut()
+		convert()
+		check()
+		transcribe()
+		writer()
 		btn_text.set("Record")
 
 

@@ -47,35 +47,38 @@ def transcribe_gcs_with_word_time_offsets(mcontent):
 		return alternative.words
 
 
+def transcribe():
+	mydir = os.getcwd()+"/chunks/flac/"
+	info = []
 
-mydir = os.getcwd()+"/chunks/flac/"
-info = []
+	for (dirpath, dirnames, filenames) in os.walk(mydir):
+		for filename in filenames:
+			with open(mydir+filename, 'rb') as fd:
+				mcontent = fd.read()
+				info.append(transcribe_gcs_with_word_time_offsets(mcontent))
+			os.remove(mydir+filename)
 
-for (dirpath, dirnames, filenames) in os.walk(mydir):
-	for filename in filenames:
-		with open(mydir+filename, 'rb') as fd:
-			mcontent = fd.read()
-			info.append(transcribe_gcs_with_word_time_offsets(mcontent))
-		os.remove(mydir+filename)
-
-#prepping for pickle
-mystr = ""
-strings = []
-for wObjectList in info:
+	#prepping for pickle
 	mystr = ""
-	for wObject in wObjectList:
-		mystr += wObject.word
-		#print(type(wObject.word))
-		#print(wObject.word)
-		mystr += " "
-		#print(mystr)
-	strings.append(mystr)
-	mystr = ""
+	strings = []
+	for wObjectList in info:
+		mystr = ""
+		for wObject in wObjectList:
+			mystr += wObject.word
+			#print(type(wObject.word))
+			#print(wObject.word)
+			mystr += " "
+			#print(mystr)
+		strings.append(mystr)
+		mystr = ""
 
-#print(strings)
+	#print(strings)
 
-#pickle dumping time
-os.chdir(os.getcwd()+"//pickles")
-outfile = open("words.pkl", "wb")
-pickle.dump(strings,outfile)
-outfile.close
+	#pickle dumping time
+	projDir = os.getcwd()
+	os.chdir(os.getcwd()+"//pickles")
+	outfile = open("words.pkl", "wb")
+	pickle.dump(strings,outfile)
+	outfile.close()
+	os.chdir(projDir)
+
